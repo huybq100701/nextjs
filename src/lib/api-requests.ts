@@ -74,3 +74,4 @@ export async function apiGetAuthUser(token?: string): Promise<FilteredUser> {
 
   return handleResponse<UserResponse>(response).then((data) => data.data.user);
 }
+

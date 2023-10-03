@@ -53,6 +53,11 @@ const Header = () => {
             {user && (
               <>
                 <li>
+                  <Link href="/orders" className="text-ct-dark-600">
+                    Orders
+                  </Link>
+                </li>
+                <li>
                   <Link href="/profile" className="text-ct-dark-600">
                     Profile
                   </Link>
