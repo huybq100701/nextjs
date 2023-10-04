@@ -26,13 +26,12 @@ const OrdersForm = () => {
           pageSize: 10000,
         };
 
-        const ordersData: Order[] = await getOrders(payload);
-
-        if (Array.isArray(ordersData)) {
-          setEvents(ordersData);
-          console.log('Fetched orders data:', ordersData);
+        const response = await getOrders(payload);
+        if (response && response.result && Array.isArray(response.result)) {
+          setEvents(response.result);
+          console.log('Fetched orders data:', response.result);
         } else {
-          console.error('Data fetched is not an array:', ordersData);
+          console.error('Invalid response data:', response);
         }
       } catch (error) {
         console.error('Error fetching orders:', error);
@@ -47,8 +46,8 @@ const OrdersForm = () => {
       <section className="order-data bg-gray-100 p-4">
         <h2 className="text-2xl font-bold">Orders Data</h2>
         <ul className="mt-4">
-          {events.map((event, index) => (
-            <li key={index} className="border-b py-2">
+          {events.map((event) => (
+            <li key={event.id} className="border-b py-2">
               <p className="text-lg font-semibold">ID: {event.id}</p>
               <p>Code: {event.code}</p>
               <p>Channel: {event.channel}</p>
