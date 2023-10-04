@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/react-big-calendar": "^1.6.5",
     "prisma": "^4.14.0"
   }
 }
