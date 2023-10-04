@@ -19,14 +19,14 @@ export async function POST(req: NextRequest) {
       return getErrorResponse(401, "Invalid email or password");
     }
 
-    const JWT_EXPIRES_IN = getEnvVariable("JWT_EXPIRES_IN");
+    const NEXT_PUBLIC_JWT_EXPIRES_IN = getEnvVariable("NEXT_PUBLIC_JWT_EXPIRES_IN");
 
     const token = await signJWT(
       { sub: user.id },
-      { exp: `${JWT_EXPIRES_IN}m` }
+      { exp: `${NEXT_PUBLIC_JWT_EXPIRES_IN}m` }
     );
 
-    const tokenMaxAge = parseInt(JWT_EXPIRES_IN) * 60;
+    const tokenMaxAge = parseInt(NEXT_PUBLIC_JWT_EXPIRES_IN) * 60;
     const cookieOptions = {
       name: "token",
       value: token,

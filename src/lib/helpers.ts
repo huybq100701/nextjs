@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import toast from "react-hot-toast";
 
-type EnvVariableKey = "JWT_SECRET_KEY" | "JWT_EXPIRES_IN";
+type EnvVariableKey = "NEXT_PUBLIC_JWT_SECRET_KEY" | "NEXT_PUBLIC_JWT_EXPIRES_IN";
 
 export function getEnvVariable(key: EnvVariableKey): string {
   const value = process.env[key];
