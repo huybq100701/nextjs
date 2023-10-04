@@ -1,7 +1,9 @@
+
 import Header from "@/components/Header";
 import { apiGetAuthUser } from "@/lib/api-requests";
 import { cookies } from "next/headers";
 import { AuthPageInvisible } from "@/lib/protect-page";
+import OrdersForm from "./orders-form";
 
 export default async function OrdersPage() {
   const cookieStore = cookies();
@@ -25,6 +27,7 @@ export default async function OrdersPage() {
         </div>
       </section>
       <AuthPageInvisible />
+      <OrdersForm/>
     </>
   );
 }

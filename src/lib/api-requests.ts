@@ -75,3 +75,19 @@ export async function apiGetAuthUser(token?: string): Promise<FilteredUser> {
   return handleResponse<UserResponse>(response).then((data) => data.data.user);
 }
 
+export default async function apiGetOrders() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch orders (${response.status}): ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    return null;
+  }
+}
+
